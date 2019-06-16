@@ -10,3 +10,17 @@ before_install:
 # the -- --coverage is to exit the test (remember the npm run test behavior)
 script:
   - docker run -e CI=true renmo/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-273615784799"
+  bucket_path: "docker-react"
+  #this option to only attempt the configuration for master push
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_Access_key: 
+    secure: "$AWS_SECRET_KEY"
