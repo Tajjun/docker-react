@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build:
+      # where should the files come from
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - //c/Users/tajju/web-development/frontend:/app
+  tests:
+    build:
+      # where should the files come from
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - //c/Users/tajju/web-development/frontend:/app
+    command: ["npm", "run", "test"]
