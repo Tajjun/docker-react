@@ -12,6 +12,7 @@ RUN npm run build
 
 # Phase 2 of nginx
 
-FROM nginx 
+FROM nginx
+EXPOSE 80
 # command to copy over the folder from the previous container
 COPY --from=builder /app/build /usr/share/nginx/html
