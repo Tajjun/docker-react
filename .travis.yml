@@ -1,0 +1,12 @@
+# we need super user permissions first
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t renmo/docker-react -f Dockerfile.dev .
+
+# all different command that need to be executed to run the test
+# the -- --coverage is to exit the test (remember the npm run test behavior)
+script:
+  - docker run renmo/docker-react npm run test -- --coverage
