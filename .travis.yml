@@ -9,4 +9,4 @@ before_install:
 # all different command that need to be executed to run the test
 # the -- --coverage is to exit the test (remember the npm run test behavior)
 script:
-  - docker run renmo/docker-react npm run test -- --coverage
+  - docker run -e CI=true renmo/docker-react npm run test -- --coverage
